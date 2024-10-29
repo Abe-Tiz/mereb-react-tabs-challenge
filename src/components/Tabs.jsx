@@ -24,8 +24,6 @@ const Tabs = () => {
      dispatch(FETCH_REQUEST({ tab: index + 1 }));
    }
 };
- 
-
 
     return (
       <div className="container">

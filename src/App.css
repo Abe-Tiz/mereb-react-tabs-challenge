@@ -5,7 +5,7 @@
 }
 
 body {
-    background-color: black;
+    /* background-color: black; */
     font-family: 'Roboto', sans-serif;
     margin: 20px;
 }
@@ -13,20 +13,76 @@ body {
 .container {
     width: 960px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 }
-/* TODO: Add css here */
+ 
+/* Base styles for the container */
+.container {
+    max-width: 800px;  /* Limit the width of the container */
+    margin: 0 auto;    /* Center the container */
+    padding: 20px;     /* Add padding */
+    font-family: Arial, sans-serif; /* Set a default font */
+}
+
+/* Styles for the tabs */
 .tabs {
-
+    display: flex;              /* Arrange tabs in a row */
+    margin-bottom: 20px;       /* Space between tabs and content */
+    border-bottom: 2px solid #ccc; /* Bottom border for tabs */
 }
 
+/* Individual tab button styles */
+.btn {
+    padding: 10px 15px;                /* Padding around the button */
+    margin-right: 5px;                 /* Space between buttons */
+    cursor: pointer;                   /* Change cursor to pointer */
+    border: none;                      /* Remove default border */
+    background-color: #f1f1f1;        /* Default background color */
+    transition: background-color 0.3s; /* Smooth transition */
+    border-radius: 5px;               /* Rounded corners */
+    font-size: 16px;                   /* Font size */
+}
 
-@media only screen and (max-width: 960px) {
+/* Hover effect for tabs */
+.btn:hover {
+    background-color: #e1e1e1; /* Lighter background on hover */
+}
 
-    .container {
-        width: 100%;
+/* Active tab styles */
+.btn.active {
+    background-color: #007bff; /* Blue background for active tab */
+    color: white;               /* White text for active tab */
+    font-weight: bold;          /* Bold text for active tab */
+}
+
+/* Styles for the content area */
+.content {
+    padding: 15px;              /* Padding around content */
+    border: 1px solid #ccc;     /* Border around content */
+    border-radius: 5px;         /* Rounded corners */
+    background-color: #fff;     /* White background for content */
+}
+
+/* Content header styles */
+.content h2 {
+    margin-top: 0;             /* Remove default margin at the top */
+}
+
+/* Content paragraph styles */
+.content p {
+    line-height: 1.5;          /* Spacing between lines */
+    color: #333;               /* Darker text color */
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 600px) {
+    .tabs {
+        flex-direction: column;  /* Stack tabs vertically on small screens */
     }
 
-    .content {
-        padding: 50px;
+    .btn {
+        margin-bottom: 5px;      /* Space between stacked buttons */
+        width: 100%;             /* Full width buttons */
     }
 }

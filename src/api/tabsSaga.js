@@ -6,9 +6,9 @@ function* fetchTabsData(action) {
   try {
     const tab = action.payload.tab;
     const response = yield call(axios.get, `/api/${tab}/short`)
-   const cleanedData = response.data.replace(/<\/?p>/g, "");
+  const cleanedData = response.data.replace(/<\/?p>/g, "");  
 
-    yield put(FETCH_SUCCESS(cleanedData));
+    yield put(FETCH_SUCCESS({ tab, data: cleanedData })); 
   } catch (error) {
     yield put(FETCH_FAILURE(error.message || "Failed to fetch tabs data"));
   }

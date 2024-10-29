@@ -8,26 +8,21 @@ const Tabs = () => {
     const tabsState = useSelector((state) => { 
       return state.tabs;  
     });
-   console.log("lorum ipsum:", tabsState);  
+  
+    const titles = ["Title 1", "Title 2", "Title 3", "Title 4"];  
     
     useEffect(() => {
+      if (!tabsState[0]) {
         dispatch(FETCH_REQUEST({ tab: 1 }));
-    }, [dispatch])
+      }
+    }, [dispatch, tabsState]);
   
   const handleTabClick = (index) => {
     setActiveTab(index);
-      let tabParam;
-  if (index === 0) {
-    tabParam = index + 1;  
-  } else if (index === 1) {
-    tabParam = 1;  
-  } else if (index === 2) {
-    tabParam = index - 1;  
-  } else if (index === 3) {
-    tabParam = index - 2;  
-  }
 
-  dispatch(FETCH_REQUEST({ tab: tabParam }));
+   if (!tabsState[index]) {
+     dispatch(FETCH_REQUEST({ tab: index + 1 }));
+   }
 };
  
 
@@ -46,7 +41,8 @@ const Tabs = () => {
           ))}
         </div>
         <div className="content">
-          {tabsState}
+          <h2>{titles[activeTab]}</h2>
+          <p>{tabsState[activeTab] || "No content available"}</p>
         </div>
       </div>
     );

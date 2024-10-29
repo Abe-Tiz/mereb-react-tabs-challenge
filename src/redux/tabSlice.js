@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import tabsData from './../data/tabData';
 
 const tabsSlice = createSlice({
     name: "tabs",
@@ -14,9 +13,9 @@ const tabsSlice = createSlice({
             state.error = null;
         },
         FETCH_SUCCESS: (state, action) => {
+            const { tab, data } = action.payload;
             state.loading = false;
-            state.tabs = action.payload
-            // console.log("slice:",state.tabs)
+            state.tabs[tab - 1] = data;  
         },
         FETCH_FAILURE: (state, action) => {
             state.loading = false;
